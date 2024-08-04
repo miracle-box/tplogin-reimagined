@@ -6,6 +6,8 @@ import me.sagirii.tplogin.TpLoginPlugin.plugin
 import me.sagirii.tplogin.TpLoginPlugin.plugin_=
 import me.sagirii.tplogin.config.Config
 import me.sagirii.tplogin.config.ConfigManager
+import me.sagirii.tplogin.config.Location
+import me.sagirii.tplogin.config.World
 import me.sagirii.tplogin.listener.BlockPlaceListener
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -32,9 +34,10 @@ class TpLoginPlugin extends JavaPlugin {
     override def onEnable(): Unit = {
         if plugin == null then plugin = this
 
+        val cm = ConfigManager(this)
         // Load configuration and register tasks and listeners
-        ConfigManager.saveDefault(plugin)
-        updateConfig(ConfigManager.load(plugin))
+        cm.saveDefault()
+        updateConfig(cm.load())
 
         this.getCommand("border").setExecutor(TpLoginCommand)
     }
@@ -43,7 +46,8 @@ class TpLoginPlugin extends JavaPlugin {
         config = newConfig
 
         // Save config to disk
-        ConfigManager.save(plugin, newConfig)
+        val cm = ConfigManager(this)
+        cm.save(newConfig)
 
         // Register events
         BlockPlaceListener.unregister()

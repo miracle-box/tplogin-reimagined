@@ -22,6 +22,7 @@ repositories {
 
 dependencies {
     implementation("org.scala-lang:scala3-library_3:3.3.3")
+    implementation("com.github.pureconfig:pureconfig-generic-scala3_3:0.17.7")
     compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
     // fixes build failure.
     compileOnly("org.jetbrains:annotations:24.1.0")

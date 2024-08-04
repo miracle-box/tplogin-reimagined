@@ -17,7 +17,7 @@ object SubCommandReload extends SubCommand {
 
     override def execute(sender: CommandSender, params: List[String]): Boolean = {
         val plugin = TpLoginPlugin.plugin
-        plugin.updateConfig(ConfigManager.load(plugin))
+        plugin.updateConfig(ConfigManager(plugin).load())
         sender.sendMessage("Config reloaded from disk.")
         true
     }
