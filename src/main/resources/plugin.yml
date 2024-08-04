@@ -5,6 +5,6 @@ main: 'me.sagirii.tplogin.TpLoginPlugin'
 api-version: '1.21'
 
 commands:
-  border:
+  tplogin:
     description: Main command of TpLogin Reimagined.
     usage: /<command> <subcommand>

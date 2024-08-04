@@ -39,7 +39,7 @@ class TpLoginPlugin extends JavaPlugin {
         cm.saveDefault()
         updateConfig(cm.load())
 
-        this.getCommand("border").setExecutor(TpLoginCommand)
+        this.getCommand("tplogin").setExecutor(TpLoginCommand)
     }
 
     def updateConfig(newConfig: Config): Unit = {

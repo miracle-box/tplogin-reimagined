@@ -1,5 +1,6 @@
 package me.sagirii.tplogin.config
 
+import com.typesafe.config.ConfigRenderOptions
 import java.nio.file.Files
 import java.nio.file.Paths
 import me.sagirii.tplogin.TpLoginPlugin
@@ -34,20 +35,29 @@ class ConfigManager(plugin: TpLoginPlugin) {
     }
 
     def save(newConfig: Config): Unit = {
-        val config =
-            ConfigWriter[PluginConfig].to(PluginConfig()).render()
-        val locations =
-            ConfigWriter[LocationsConfig].to(LocationsConfig(newConfig.locations)).render()
-        val worlds =
-            ConfigWriter[WorldsConfig].to(WorldsConfig(newConfig.worlds)).render()
+        val renderOptions = ConfigRenderOptions
+            .defaults()
+            // Use HOCON
+            .setJson(false)
+            // Disable commands that shows the origin of the value
+            .setOriginComments(false)
+            // Preserve original comments (though there's no way to add comments in PureConfig)
+            .setComments(true)
+            // Pretty print
+            .setFormatted(true)
 
-        plugin.getLogger.info(config)
-        plugin.getLogger.info(locations)
-        plugin.getLogger.info(worlds)
+        val config =
+            ConfigWriter[PluginConfig].to(PluginConfig()).render(renderOptions)
+        val locations =
+            ConfigWriter[LocationsConfig].to(LocationsConfig(newConfig.locations)).render(renderOptions)
+        val worlds =
+            ConfigWriter[WorldsConfig].to(WorldsConfig(newConfig.worlds)).render(renderOptions)
+
+        Files.write(configPath, config.getBytes)
+        Files.write(locationsPath, locations.getBytes)
+        Files.write(worldsPath, worlds.getBytes)
     }
 
 }
 
-object ConfigManager {
-    
-}
+object ConfigManager {}
