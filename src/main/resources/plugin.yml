@@ -1,0 +1,10 @@
+name: 'TpLoginReimagined'
+version: '${version}'
+description: 'Teleport players to a specific location on login.'
+main: 'me.sagirii.tplogin.TpLoginPlugin'
+api-version: '1.21'
+
+commands:
+  border:
+    description: Main command of TpLogin Reimagined.
+    usage: /<command> <subcommand>
