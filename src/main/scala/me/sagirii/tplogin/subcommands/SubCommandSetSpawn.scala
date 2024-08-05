@@ -9,7 +9,7 @@ object SubCommandSetSpawn extends SubCommand {
 
     override val name = "setspawn"
 
-    override val permission = Some("world.setspawn")
+    override val permission = Some("command.setspawn")
 
     override val paramNums = Some(List(1, 2))
 

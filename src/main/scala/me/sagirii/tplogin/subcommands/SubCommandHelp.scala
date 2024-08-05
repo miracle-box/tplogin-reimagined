@@ -1,6 +1,5 @@
 package me.sagirii.tplogin.subcommands
 
-import me.sagirii.tplogin.TpLoginPlugin
 import org.bukkit.command.CommandSender
 
 object SubCommandHelp extends SubCommand {
@@ -11,7 +10,7 @@ object SubCommandHelp extends SubCommand {
 
     override val paramNums = None
 
-    override val helpText = "Shows the help message of World Border."
+    override val helpText = "Shows the help message of TpLogin."
 
     override def execute(sender: CommandSender, params: List[String]): Boolean = {
         sender.sendMessage(this.helpText)

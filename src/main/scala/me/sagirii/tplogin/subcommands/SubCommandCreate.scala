@@ -5,11 +5,11 @@ import me.sagirii.tplogin.config.ConfigManager
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-object SubCommandCreateLocation extends SubCommand {
+object SubCommandCreate extends SubCommand {
 
     override val name = "create"
 
-    override val permission = Some("location.create")
+    override val permission = Some("command.create")
 
     override val paramNums = Some(List(1))
 

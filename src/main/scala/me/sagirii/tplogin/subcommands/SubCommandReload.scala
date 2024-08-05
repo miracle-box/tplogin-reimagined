@@ -9,7 +9,7 @@ object SubCommandReload extends SubCommand {
 
     override val name = "reload"
 
-    override val permission = Some("reload")
+    override val permission = Some("command.reload")
 
     override val paramNums = None
 
