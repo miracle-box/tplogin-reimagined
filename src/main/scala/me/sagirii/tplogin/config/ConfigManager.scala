@@ -5,6 +5,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import me.sagirii.tplogin.TpLoginPlugin
 import me.sagirii.tplogin.config.*
+import org.bukkit.Location
 import pureconfig.*
 
 class ConfigManager(plugin: TpLoginPlugin) {
@@ -72,8 +73,9 @@ object ConfigManager {
     }
 
     def setSpawn(plugin: TpLoginPlugin, world: String, location: String): Unit = {
+        // TODO)) Use a separate method to get new WorldOptions instances
         val worldOpts =
-            TpLoginPlugin.config.worlds.getOrElse(world, World(spawnLocation = location))
+            TpLoginPlugin.config.worlds.getOrElse(world, WorldOptions(spawnLocation = location))
 
         val config = TpLoginPlugin.config.copy(
           worlds = TpLoginPlugin.config.worlds + (world -> worldOpts.copy(spawnLocation = location))

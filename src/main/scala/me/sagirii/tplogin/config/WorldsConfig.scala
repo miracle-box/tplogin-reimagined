@@ -5,11 +5,11 @@ import pureconfig.generic.semiauto.*
 
 case class WorldsConfig(worlds: WorldsSection)
 
-type WorldsSection = Map[String, World]
+type WorldsSection = Map[String, WorldOptions]
 
-case class World(
+case class WorldOptions(
     spawnLocation: String
 )
 
 given ConfigConvert[WorldsConfig] = deriveConvert
-given ConfigConvert[World]        = deriveConvert
+given ConfigConvert[WorldOptions]        = deriveConvert

@@ -2,7 +2,6 @@ package me.sagirii.tplogin.subcommands
 
 import me.sagirii.tplogin.TpLoginPlugin
 import me.sagirii.tplogin.config.ConfigManager
-import me.sagirii.tplogin.config.Location
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -30,11 +29,7 @@ object SubCommandCreateLocation extends SubCommand {
             return false
         }
 
-        ConfigManager.addLocation(
-          TpLoginPlugin.plugin,
-          name,
-          Location(loc.getWorld.getName, loc.getX, loc.getY, loc.getZ, loc.getYaw, loc.getPitch)
-        )
+        ConfigManager.addLocation(TpLoginPlugin.plugin, name, loc)
 
         sender.sendMessage(s"Created location $name at your current location.")
         true

@@ -40,11 +40,7 @@ object SubCommandSetSpawn extends SubCommand {
             return false
         }
 
-        ConfigManager.setSpawn(
-          TpLoginPlugin.plugin,
-          worldName,
-          locName
-        )
+        ConfigManager.setSpawn(TpLoginPlugin.plugin, worldName, locName)
 
         sender.sendMessage(s"Set spawn point of world $worldName to location $locName.")
         true

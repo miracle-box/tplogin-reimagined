@@ -6,8 +6,8 @@ import me.sagirii.tplogin.TpLoginPlugin.plugin
 import me.sagirii.tplogin.TpLoginPlugin.plugin_=
 import me.sagirii.tplogin.config.Config
 import me.sagirii.tplogin.config.ConfigManager
-import me.sagirii.tplogin.config.Location
-import me.sagirii.tplogin.config.World
+import me.sagirii.tplogin.config.LocationOptions
+import me.sagirii.tplogin.config.WorldOptions
 import me.sagirii.tplogin.listener.PlayerJoinListener
 import me.sagirii.tplogin.listener.PlayerRespawnListener
 import org.bukkit.plugin.java.JavaPlugin
