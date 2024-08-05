@@ -24,6 +24,12 @@ object SubCommandCreateLocation extends SubCommand {
 
         val name = params.head
         val loc  = sender.asInstanceOf[Player].getLocation
+
+        if TpLoginPlugin.config.locations.contains(name) then {
+            sender.sendMessage(s"Location $name already exists.")
+            return false
+        }
+
         ConfigManager.addLocation(
           TpLoginPlugin.plugin,
           name,

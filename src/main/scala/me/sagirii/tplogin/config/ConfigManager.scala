@@ -71,4 +71,16 @@ object ConfigManager {
         plugin.updateConfig(config)
     }
 
+    def setSpawn(plugin: TpLoginPlugin, world: String, location: String): Unit = {
+        val worldOpts =
+            TpLoginPlugin.config.worlds.getOrElse(world, World(spawnLocation = location))
+
+        val config = TpLoginPlugin.config.copy(
+          worlds = TpLoginPlugin.config.worlds + (world -> worldOpts.copy(spawnLocation = location))
+        )
+
+        plugin.getLogger.info(s"Set spawn point for world $world to $location")
+        plugin.updateConfig(config)
+    }
+
 }
