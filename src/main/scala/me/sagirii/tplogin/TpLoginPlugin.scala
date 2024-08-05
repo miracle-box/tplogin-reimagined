@@ -8,7 +8,8 @@ import me.sagirii.tplogin.config.Config
 import me.sagirii.tplogin.config.ConfigManager
 import me.sagirii.tplogin.config.Location
 import me.sagirii.tplogin.config.World
-import me.sagirii.tplogin.listener.BlockPlaceListener
+import me.sagirii.tplogin.listener.PlayerJoinListener
+import me.sagirii.tplogin.listener.PlayerRespawnListener
 import org.bukkit.plugin.java.JavaPlugin
 
 object TpLoginPlugin {
@@ -50,12 +51,11 @@ class TpLoginPlugin extends JavaPlugin {
         cm.save(newConfig)
 
         // Register events
-        BlockPlaceListener.unregister()
-        this.getServer.getPluginManager.registerEvents(
-          BlockPlaceListener,
-          this
-        )
+        PlayerJoinListener.unregister()
+        this.getServer.getPluginManager.registerEvents(PlayerJoinListener, this)
 
+        PlayerRespawnListener.unregister()
+        this.getServer.getPluginManager.registerEvents(PlayerRespawnListener, this)
         getLogger.info("Configuration updated.")
     }
 
