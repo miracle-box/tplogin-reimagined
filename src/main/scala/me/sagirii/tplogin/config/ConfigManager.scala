@@ -60,4 +60,15 @@ class ConfigManager(plugin: TpLoginPlugin) {
 
 }
 
-object ConfigManager {}
+object ConfigManager {
+
+    def addLocation(plugin: TpLoginPlugin, name: String, location: Location): Unit = {
+        val config = TpLoginPlugin.config.copy(
+          locations = TpLoginPlugin.config.locations + (name -> location)
+        )
+
+        plugin.getLogger.info(s"Added location $location with name $name")
+        plugin.updateConfig(config)
+    }
+
+}

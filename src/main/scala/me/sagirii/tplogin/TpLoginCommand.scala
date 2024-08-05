@@ -1,6 +1,7 @@
 package me.sagirii.tplogin
 
 import me.sagirii.tplogin.subcommands.SubCommand
+import me.sagirii.tplogin.subcommands.SubCommandCreateLocation
 import me.sagirii.tplogin.subcommands.SubCommandHelp
 import me.sagirii.tplogin.subcommands.SubCommandReload
 import org.bukkit.command.Command
@@ -16,7 +17,8 @@ object TpLoginCommand extends CommandExecutor {
 
     private val subCommandsList = List(
       SubCommandHelp,
-      SubCommandReload
+      SubCommandReload,
+      SubCommandCreateLocation
     )
 
     val subCommands: Map[String, SubCommand] =
