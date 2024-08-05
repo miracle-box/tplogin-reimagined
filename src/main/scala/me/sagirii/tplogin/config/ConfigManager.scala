@@ -14,9 +14,9 @@ class ConfigManager(plugin: TpLoginPlugin) {
     private val locationsPath = Paths.get(dataFolder.getPath, "locations.conf")
     private val worldsPath    = Paths.get(dataFolder.getPath, "worlds.conf")
 
-    val config: Config = load()
-
     def saveDefault(): Unit = {
+        if Files.notExists(dataFolder.toPath) then Files.createDirectories(dataFolder.toPath)
+
         if Files.notExists(configPath) then plugin.saveResource("config.conf", false)
         if Files.notExists(locationsPath) then plugin.saveResource("locations.conf", false)
         if Files.notExists(worldsPath) then plugin.saveResource("worlds.conf", false)
