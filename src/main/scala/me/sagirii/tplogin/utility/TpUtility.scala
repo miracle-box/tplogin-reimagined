@@ -13,21 +13,18 @@ object TpUtility {
         val worldOpts = TpLoginPlugin.config.worlds.get(world)
 
         // TODO)) Support more teleport types
-        val targetLocOpts = worldOpts match {
+        worldOpts match {
         case Some(options) =>
-            TpLoginPlugin.config.locations.get(options.spawnLocation)
+            val locOpts = TpLoginPlugin.config.locations.get(options.spawnLocation)
+
+            // Implicit conversion happens here
+            locOpts match {
+            case Some(loc) => Some(loc)
+            case None      => None
+            }
+
         case None =>
             None
-        }
-
-        targetLocOpts.flatMap { opts =>
-            Option(TpLoginPlugin.plugin.getServer.getWorld(opts.world)).map { targetWorld =>
-                new Location(targetWorld, opts.x, opts.y, opts.z, opts.yaw, opts.pitch)
-            } orElse {
-                // Log when no target world is found
-                TpLoginPlugin.plugin.getLogger.warning(s"World ${opts.world} not found!")
-                None
-            }
         }
 
     }
