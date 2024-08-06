@@ -39,6 +39,7 @@ class TpLoginPlugin extends JavaPlugin {
         updateConfig(cm.load())
 
         this.getCommand("tplogin").setExecutor(TpLoginCommand)
+        this.getCommand("spawn").setExecutor(SpawnCommand)
     }
 
     def updateConfig(newConfig: Config): Unit = {

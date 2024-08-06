@@ -7,4 +7,7 @@ api-version: '1.21'
 commands:
   tplogin:
     description: Main command of TpLogin Reimagined.
-    usage: /<command> <subcommand>
+    usage: /tplogin <subcommand>
+  spawn:
+    description: Teleport to world spawn point.
+    usage: /spawn
