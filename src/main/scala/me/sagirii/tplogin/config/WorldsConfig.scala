@@ -12,4 +12,4 @@ case class WorldOptions(
 )
 
 given ConfigConvert[WorldsConfig] = deriveConvert
-given ConfigConvert[WorldOptions]        = deriveConvert
+given ConfigConvert[WorldOptions] = deriveConvert
