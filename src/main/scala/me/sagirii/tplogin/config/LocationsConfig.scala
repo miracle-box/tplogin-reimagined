@@ -18,37 +18,43 @@ case class LocationOptions(
     pitch: Float
 )
 
-// Implicitly convert our location config to a bukkit Location
-given Conversion[LocationOptions, Location] with {
+object LocationOptions {
 
-    def apply(loc: LocationOptions): Location = {
-        val world = TpLoginPlugin.plugin.getServer.getWorld(loc.world)
-        if world == null then throw new IllegalArgumentException(s"World ${loc.world} not found!")
+    // Implicitly convert our location config to a bukkit Location
+    given Conversion[LocationOptions, Location] with {
 
-        new Location(
-          world,
-          loc.x,
-          loc.y,
-          loc.z,
-          loc.yaw,
-          loc.pitch
-        )
+        def apply(loc: LocationOptions): Location = {
+            val world = TpLoginPlugin.plugin.getServer.getWorld(loc.world)
+            if world == null then throw new IllegalArgumentException(
+              s"World ${loc.world} not found!"
+            )
+
+            new Location(
+              world,
+              loc.x,
+              loc.y,
+              loc.z,
+              loc.yaw,
+              loc.pitch
+            )
+        }
+
     }
 
-}
+    // And convert back
+    given Conversion[Location, LocationOptions] with {
 
-// And convert back
-given Conversion[Location, LocationOptions] with {
+        def apply(loc: Location): LocationOptions =
+            LocationOptions(
+              loc.getWorld.getName,
+              loc.getX,
+              loc.getY,
+              loc.getZ,
+              loc.getYaw,
+              loc.getPitch
+            )
 
-    def apply(loc: Location): LocationOptions =
-        LocationOptions(
-          loc.getWorld.getName,
-          loc.getX,
-          loc.getY,
-          loc.getZ,
-          loc.getYaw,
-          loc.getPitch
-        )
+    }
 
 }
 
